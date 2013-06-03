@@ -1,10 +1,24 @@
 
+
+
+
+
+
+
 def application(environ, start_response):
 	 
-	#	output = '<html><head><link style="text/css" rel="stylesheet" href="css/bootstrap.css"></head><body><h2>Hello</h2></body></html>'
+	output = '<html><head><link style="text/css" rel="stylesheet" href="css/bootstrap.css"></head><body><h2>Hello</h2></body></html>'
+	
 	output = environ['PATH_INFO']
 
+	print output.split("/")
+	
 	headers = [('Content-type', 'text/html')]
 	start_response('200 OK', headers)
 	return [output]
 
+
+
+
+
+	

@@ -9,15 +9,15 @@ from datetime import timedelta
 #
 def get_deviceinfo():
 
-	conn = sqlite3.connect('/tmp/test.db')
+#	conn = sqlite3.connect('/tmp/test.db')
 
 	#	conn.execute('''CREATE TABLE stocks (date text, trans text, symbol text, qty real, price real)''')	
 	
-	for row in conn.execute("SELECT * FROM devices"):
-		print row[1]
+#	for row in conn.execute("SELECT * FROM devices"):
+#		print row[1]
 	
-	conn.commit()
-	conn.close()
+#	conn.commit()
+#	conn.close()
 
 	with open('/proc/uptime', 'r') as f:
 		uptime_seconds = float(f.readline().split()[0])
@@ -58,6 +58,7 @@ def application(environ, start_response):
 	request_method = environ['REQUEST_METHOD']
 
 	matched = re.match(r"/(?P<resource>\w+)/(?P<id>\w+)", path_info)
+
 
 	if matched:
 		matches = matched.groupdict()

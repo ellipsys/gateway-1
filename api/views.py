@@ -2,6 +2,8 @@
 
 import json
 
+from datetime import timedelta
+
 from django.http import HttpResponse
 
 def index(request):
@@ -15,13 +17,30 @@ def index(request):
         response = HttpResponse("Test")
         response['Content-Type'] = 'application/json'
         response.status_code = 200
-    
+        
     return response
     
 def sensors_detail(request, number):
-		response = HttpResponse("Bla")
+        
+        with open('/proc/uptime', 'r') as f:
+            uptime_seconds = float(f.readline().split()[0])
+            uptime_string = str(timedelta(seconds = uptime_seconds))
 
-		return response   
+        result = {
+            "links": [
+                { "rel": "me", "href": "localhost" },
+                { "rel": "actuators", "href": "/actuators" },
+                { "rel": "sensors", "href": "/sensors" } 
+            ],
+            "uptime": uptime_string,
+            "sensors": [
+                { "id": 1234, "name": "temperature" }    
+            ] 
+        }
+            
+        response = HttpResponse(json.dumps(result))
+
+        return response   
  
 def sensors(request):
     

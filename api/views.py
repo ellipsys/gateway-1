@@ -18,9 +18,12 @@ def index(request):
     
     return response
     
-    
+def sensors_detail(request, number):
+		response = HttpResponse("Bla")
+
+		return response   
+ 
 def sensors(request):
-    
     
     if request.method == 'GET':
         response = HttpResponse("15,4")

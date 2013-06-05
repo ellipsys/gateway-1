@@ -4,5 +4,5 @@ $().ready(function() {
 			$('#uptime').text(response.uptime);
 			console.log($('#uptime'));
 		}
-	}) ;
+	});
 });

@@ -1,6 +1,7 @@
 # Create your views here.
 
 import json
+import getstatus from mpd
 
 from datetime import timedelta
 
@@ -14,7 +15,7 @@ def index(request):
         response.status_code = 201
         
     else:
-        response = HttpResponse("Test")
+        response = HttpResponse(getstatus())
         response['Content-Type'] = 'application/json'
         response.status_code = 200
         

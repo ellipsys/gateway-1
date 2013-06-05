@@ -1,7 +1,7 @@
 # Create your views here.
 
 import json
-import getstatus from mpd
+from mpd import getstatus
 
 from datetime import timedelta
 

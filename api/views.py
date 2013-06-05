@@ -1,21 +1,24 @@
 # Create your views here.
 
 import json
-import getstatus from mpdclient
+from mpdclient import getstatus 
 
 from datetime import timedelta
 
 from django.http import HttpResponse
 
 def index(request):
-    
+   
+    status = getstatus()
+    status["links"] = { "rel": "self" }
+ 
     if request.method == 'POST':
         response = HttpResponse("Test")
         response['Content-Type'] = 'application/json'
         response.status_code = 201
         
     else:
-        response = HttpResponse(getstatus())
+        response = HttpResponse(json.dumps(status))
         response['Content-Type'] = 'application/json'
         response.status_code = 200
         

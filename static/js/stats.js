@@ -1,5 +1,5 @@
 $().ready(function() {
-	$.ajax("/sensors/dd", {
+	$.ajax("/api/sensors/1234", {
 		success: function(response) {
 			$('#uptime').text(response.uptime);
 			console.log($('#uptime'));

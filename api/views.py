@@ -39,6 +39,7 @@ def sensors_detail(request, number):
         }
             
         response = HttpResponse(json.dumps(result))
+        response['Content-Type'] = 'application/json'
 
         return response   
  

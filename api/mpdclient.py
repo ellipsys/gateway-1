@@ -54,7 +54,7 @@ def getstatus():
     # pp = pprint.PrettyPrinter(indent=4)
 
     ## Print out MPD stats & disconnect
-    output = client.list('file') #stats()
+    output = client.status() #list('file') #stats()
 
     # pp.pprint(client.stats())
 
